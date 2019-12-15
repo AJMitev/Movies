@@ -147,6 +147,24 @@ const movieController = (function() {
       });
   };
 
+  const buyTicket = function(context) {
+    const movieId = context.params.id;
+    const endpoint = `movies/${movieId}`;
+
+    requester
+      .get(endpoint, 'appdata', 'Kinvey')
+      .then(helper.handler)
+      .then(movie => {
+        movie.tickets -= 1;
+
+        return requester.put(endpoint, 'appdata', 'Kinvey', movie);
+      })
+      .then(helper.handler)
+      .then(() => {
+        context.redirect('#/cinema');
+      });
+  };
+
   return {
     getCreate,
     postCreate,
@@ -156,6 +174,7 @@ const movieController = (function() {
     postEdit,
     getDelete,
     postDelete,
-    getDetails
+    getDetails,
+    buyTicket
   };
 })();

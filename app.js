@@ -18,6 +18,7 @@ window.onload = () => {
     this.get('#/movie/edit/:id', movieController.getEdit);
     this.get('#/movie/delete/:id', movieController.getDelete);
     this.get('#/movie/details/:id', movieController.getDetails);
+    this.get('#/movie/buy/:id', movieController.buyTicket);
 
     this.post('#/movie/create', movieController.postCreate);
     this.post('#/movie/edit/:id', movieController.postEdit);
