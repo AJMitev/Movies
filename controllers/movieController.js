@@ -1,15 +1,9 @@
 const movieController = (function() {
   const getCreate = function(context) {
     helper.addHeaderInfo(context);
-
-    context
-      .loadPartials({
-        header: '../views/common/header.hbs',
-        footer: './views/common/footer.hbs'
-      })
-      .then(function() {
-        this.partial('./views/movie/create.hbs');
-      });
+    helper.loadPartials(context).then(function() {
+      this.partial('./views/movie/create.hbs');
+    });
   };
 
   const postCreate = function(context) {
@@ -61,14 +55,9 @@ const movieController = (function() {
       .then(helper.handler)
       .then(movies => {
         context.movies = movies;
-        context
-          .loadPartials({
-            header: '../views/common/header.hbs',
-            footer: '../views/common/footer.hbs'
-          })
-          .then(function() {
-            this.partial('../views/movie/my-movies.hbs');
-          });
+        helper.loadPartials(context).then(function() {
+          this.partial('../views/movie/my-movies.hbs');
+        });
       });
   };
 
@@ -82,14 +71,10 @@ const movieController = (function() {
       .then(helper.handler)
       .then(movie => {
         context.movie = movie;
-        context
-          .loadPartials({
-            header: '../views/common/header.hbs',
-            footer: '../views/common/footer.hbs'
-          })
-          .then(function() {
-            this.partial('../views/movie/edit.hbs');
-          });
+
+        helper.loadPartials(context).then(function() {
+          this.partial('../views/movie/edit.hbs');
+        });
       });
   };
 
@@ -122,14 +107,10 @@ const movieController = (function() {
       .then(helper.handler)
       .then(movie => {
         context.movie = movie;
-        context
-          .loadPartials({
-            header: '../views/common/header.hbs',
-            footer: '../views/common/footer.hbs'
-          })
-          .then(function() {
-            this.partial('../views/movie/delete.hbs');
-          });
+
+        helper.loadPartials(context).then(function() {
+          this.partial('../views/movie/delete.hbs');
+        });
       });
   };
 
